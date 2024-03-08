@@ -6,6 +6,7 @@
 using namespace std;
 int main(){
     string str = "rahul is wow awesome is rahul a great a";
+    // string str = "t";
     stringstream ss(str);
     string temp;
     vector<string> v;
