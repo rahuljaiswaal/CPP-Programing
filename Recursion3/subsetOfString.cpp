@@ -43,6 +43,51 @@ void storeSubset2(string ans, string original,vector<string>& v, int idx){
     storeSubset2(ans+ch,original,v,idx+1);
 }
 
+// void storeSubsetWithDup2(string ans, string original,vector<string>& v, int idx, bool flag){
+//     if(original.size()==idx){
+//         v.push_back(ans);
+//         return;
+//     }
+//     char ch = original[0];
+//     if(original.size()==1){  // when 1 element exist
+//         if(flag == true) storeSubsetWithDup2(ans+ch,original,v,idx+1,true);
+//         storeSubsetWithDup2(ans,original,v,idx+1,true);
+//         return;
+//     }
+//     char ch1 = original[1];
+//     if(ch==ch1){   // dublicate
+//         if(flag == true) storeSubsetWithDup2(ans+ch,original,v,idx+1,true);
+//         storeSubsetWithDup2(ans,original,v,idx+1,false);
+//     }
+//     else{  // no dublicate
+//         if(flag == true) storeSubsetWithDup2(ans+ch,original,v,idx+1,true);
+//         storeSubsetWithDup2(ans,original,v,idx+1,true);
+//     }
+// }
+
+
+void storeSubsetWithDup(string ans, string original,vector<string>& v, bool flag){
+    if(original==""){
+        v.push_back(ans);
+        return;
+    }
+    char ch = original[0];
+    if(original.size()==1){  // when 1 element exist
+        if(flag == true) storeSubsetWithDup(ans+ch,original.substr(1),v,true);
+        storeSubsetWithDup(ans,original.substr(1),v,true);
+        return;
+    }
+    char ch1 = original[1];
+    if(ch==ch1){   // dublicate
+        if(flag == true) storeSubsetWithDup(ans+ch,original.substr(1),v,true);
+        storeSubsetWithDup(ans,original.substr(1),v,false);
+    }
+    else{  // no dublicate
+        if(flag == true) storeSubsetWithDup(ans+ch,original.substr(1),v,true);
+        storeSubsetWithDup(ans,original.substr(1),v,true);
+    }
+}
+
 int main(){
     string str = "abc";
     printSubset("",str);
@@ -61,4 +106,20 @@ int main(){
     for(int i=0; i<vec.size(); i++){
         cout<<vec[i]<<" ";
     }
+    
+    cout<<endl;
+    string st = "aab";
+    vector<string> ve;
+    storeSubsetWithDup("",st,ve,true);
+    for(int i=0; i<ve.size(); i++){
+        cout<<ve[i]<<" ";
+    }
+
+    // cout<<endl;
+    // string st2 = "aba";
+    // vector<string> ve2;
+    // storeSubsetWithDup2("",st2,ve2,0,true);
+    // for(int i=0; i<ve2.size(); i++){
+    //     cout<<ve2[i]<<" ";
+    // }
 }
