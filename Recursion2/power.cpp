@@ -10,9 +10,7 @@ int pow(int x, int n){
     if(n%2==1){
         return ans*ans*x;
     }
-
     return 0;
-    
 }
 int main(){
     int x = 2;
