@@ -3,8 +3,9 @@
 #include<vector>
 using namespace std;
 int main(){
-    vector<int> v={1,4,6,19,77,88,112,366};
-    int target = 82;  
+    vector<int> v={2,2};
+    int target = 2;  // present
+    // int target = 11;       // not  present
     cout<<"array is : ";
     for(int ele : v){
         cout<<ele<<" ";
@@ -16,12 +17,16 @@ int main(){
     while(lo<=hi){
         int mid = lo + (hi-lo) / 2;   // (lo+hi)/2
         if(v[mid]==target){
-            cout<<v[mid-1]<<" is the lower bound for  target "<<target;
-            flag = true;
-            break;
+            if(v[mid+1]==target) lo=mid+1;
+            
+            else{
+                cout<<"Element "<<target<<" first index is : "<<mid;
+                flag = true;
+                break;
+            }
         }
         else if(v[mid]>target) hi=mid-1;
         else lo=mid+1;  // v[mid]<target
     }
-    if(flag==false) cout<<v[hi]<<" is the lower bound for  target "<<target;
+    if(flag==false) cout<<target<<" is not preseennt in the array";
 }

@@ -4,7 +4,7 @@
 using namespace std;
 int main(){
     vector<int> v={1,4,6,19,77,88,112,366};
-    int target = 82;  
+    int target = 83;  
     cout<<"array is : ";
     for(int ele : v){
         cout<<ele<<" ";
@@ -16,12 +16,12 @@ int main(){
     while(lo<=hi){
         int mid = lo + (hi-lo) / 2;   // (lo+hi)/2
         if(v[mid]==target){
-            cout<<v[mid-1]<<" is the lower bound for  target "<<target;
+            cout<<v[mid+1]<<" is the upper bound for  target "<<target;
             flag = true;
             break;
         }
         else if(v[mid]>target) hi=mid-1;
         else lo=mid+1;  // v[mid]<target
     }
-    if(flag==false) cout<<v[hi]<<" is the lower bound for  target "<<target;
+    if(flag==false) cout<<v[lo]<<" is the upper bound for  target "<<target;
 }
