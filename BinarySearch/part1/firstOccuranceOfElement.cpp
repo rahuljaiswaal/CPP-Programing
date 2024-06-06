@@ -17,7 +17,7 @@ int main(){
     while(lo<=hi){
         int mid = lo + (hi-lo) / 2;   // (lo+hi)/2
         if(v[mid]==target){
-            if(v[mid+1]==target) lo=mid+1;
+            if(v[mid-1]==target) hi=mid-1;
             
             else{
                 cout<<"Element "<<target<<" first index is : "<<mid;

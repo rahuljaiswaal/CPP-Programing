@@ -27,11 +27,11 @@ void dutchFlag(vector<int>& v, int n){
     int high = n-1;
     while(mid<=high){
         if(v[mid]==2){
-            swap(mid,high);
+            swap(v[mid],v[high]);
             high--;
         }
         else if(v[mid]==0){
-            swap(mid,low);
+            swap(v[mid],v[low]);
             low++;
             mid++;
         }
